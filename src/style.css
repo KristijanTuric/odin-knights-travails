@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Eagle+Lake&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Condiment&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    gap: 50px;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    font-size: 58px;
+    font-family: Eagle Lake;
+}
+
+.github-link {
+    font-size: x-large;
+    margin-bottom: 10px;
+    font-family: Condiment;
+    transition: scale 0.2s, rotate 0.3s;
+}
+
+.github-link a {
+    text-decoration: none;
+}
+
+.github-link:hover {
+    scale: 1.2;
+    rotate: 20deg;
+}
+
+.github-link a:visited {
+    color: black;
+}
+
+button {
+    font-size: x-large;
+    border: none;
+
+    min-width: 250px;
+
+    background-color: #2C3E50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s, scale 0.1s;
+
+    font-family: Eagle Lake;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+button:active {
+    scale: 0.9;
+}
+
+#chessboard {
+    border: 2px solid black;
+    padding: 0;
+    border-collapse: collapse;
+    box-shadow: 0px 0px 50px gray;
+}
+
+#chessboard td {
+    width: 100px;
+    height: 100px;
+}
+
+.white {
+    background-color: white;
+}
+
+.black {
+    background-color: #44403c;
+}
