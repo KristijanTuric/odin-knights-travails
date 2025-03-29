@@ -55,4 +55,17 @@ randomKnightBtn.addEventListener("click", () => {
     randomCell.click();
 });
 
+clearBtn.addEventListener("click", () => {
+    knightPosition = null;
+    for (let row = 0; row < 8; row++) {
+        for (let col = 0; col < 8; col++) {
+            let cell = document.getElementById(`${row}, ${col}`);
+
+            cell.innerHTML = null;
+            cell.classList.remove("cell-active");
+            placeBtnClicked = false;
+        }
+    }
+});
+
 knightMoves([0, 0], [3, 3], 8);
