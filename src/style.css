@@ -76,11 +76,16 @@ button:active {
     padding: 0;
     border-collapse: collapse;
     box-shadow: 0px 0px 50px gray;
+
+    min-width: 800px;
+    min-height: 800px;
 }
 
 #chessboard td {
     width: 100px;
     height: 100px;
+    text-align: center;
+    font-size: 58px;
 }
 
 .white {
@@ -89,4 +94,8 @@ button:active {
 
 .black {
     background-color: #44403c;
+}
+
+.cell-active {
+    background-color: gray;
 }
