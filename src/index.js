@@ -46,4 +46,13 @@ placeKnightBtn.addEventListener("click", () => {
     placeBtnClicked = true;
 });
 
+randomKnightBtn.addEventListener("click", () => {
+    let randomRow = Math.floor(Math.random() * 8);
+    let randomCol = Math.floor(Math.random() * 8);
+
+    let randomCell = document.getElementById(`${randomRow}, ${randomCol}`);
+    placeBtnClicked = true;
+    randomCell.click();
+});
+
 knightMoves([0, 0], [3, 3], 8);
