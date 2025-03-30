@@ -25,7 +25,12 @@ for (let row = 0; row < 8; row++) {
         td.id = row + ", " + col;
         td.addEventListener("click", () => {
             if (placeBtnClicked) {
-                clearBtn.click();
+                clearKnightPosition();
+
+                if (endPosition != null) {
+                    let lastEndPosition = document.getElementById(`${endPosition[0]}, ${endPosition[1]}`);
+                    lastEndPosition.classList.add("cell-active");
+                }
 
                 // Place knight
                 knightPosition = [row, col];
@@ -33,13 +38,36 @@ for (let row = 0; row < 8; row++) {
                 placeBtnClicked = false;
                 td.classList.add("cell-active");
             } else if (selectEndBtnClicked) {
-
+                if (td.innerHTML != "♞") {
+                    if (endPosition != null) {
+                        let lastEndPosition = document.getElementById(`${endPosition[0]}, ${endPosition[1]}`);
+                        lastEndPosition.classList.remove("cell-active");
+                    }
+    
+                    // Place end point
+                    td.classList.add("cell-active");
+                    endPosition = [row, col];
+                    selectEndBtnClicked = false;
+                }                
             }
         });
 
         tr.appendChild(td);
     }
     chessboard.appendChild(tr);
+}
+
+function clearKnightPosition() {
+    knightPosition = null;
+    for (let row = 0; row < 8; row++) {
+        for (let col = 0; col < 8; col++) {
+            let cell = document.getElementById(`${row}, ${col}`);
+
+            cell.innerHTML = null;
+            cell.classList.remove("cell-active");
+            placeBtnClicked = false;
+        }
+    }
 }
 
 placeKnightBtn.addEventListener("click", () => {
@@ -55,8 +83,13 @@ randomKnightBtn.addEventListener("click", () => {
     randomCell.click();
 });
 
+selectEndBtn.addEventListener("click", () => {
+    selectEndBtnClicked = true;
+});
+
 clearBtn.addEventListener("click", () => {
     knightPosition = null;
+    endPosition = null;
     for (let row = 0; row < 8; row++) {
         for (let col = 0; col < 8; col++) {
             let cell = document.getElementById(`${row}, ${col}`);
@@ -64,6 +97,7 @@ clearBtn.addEventListener("click", () => {
             cell.innerHTML = null;
             cell.classList.remove("cell-active");
             placeBtnClicked = false;
+            selectEndBtnClicked = false;
         }
     }
 });
