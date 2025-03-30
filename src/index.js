@@ -70,6 +70,29 @@ function clearKnightPosition() {
     }
 }
 
+function animateKnightPath(path) {
+    let index = 0;
+
+    function moveStep() {
+    
+        if (index > 1 && index < path.length) {
+            let [prevRow, prevCol] = path[index - 1];
+            document.getElementById(`${prevRow}, ${prevCol}`).innerHTML = index-1;
+        }
+    
+        if (index < path.length) {
+            let [row, col] = path[index];
+            document.getElementById(`${row}, ${col}`).innerHTML = "♞";
+            document.getElementById(`${row}, ${col}`).style.transition = "transform 0.3s ease";
+    
+            index++;
+            setTimeout(moveStep, 500);
+        }    
+    }
+    
+    moveStep();
+}
+
 placeKnightBtn.addEventListener("click", () => {
     placeBtnClicked = true;
 });
@@ -103,4 +126,25 @@ clearBtn.addEventListener("click", () => {
     }
 });
 
-knightMoves([0, 0], [3, 3], 8);
+
+travailBtn.addEventListener("click", () => {
+    if (knightPosition == null || endPosition == null) {
+        alert("The start and end positions were not set!");
+        return;
+    }
+
+    for (let row = 0; row < 8; row++) {
+        for (let col = 0; col < 8; col++) {
+            if ([row, col] == knightPosition || [row, col] == endPosition) {
+                continue;
+            } else {
+                let cell = document.getElementById(`${row}, ${col}`);
+                cell.innerHTML = "";
+            }
+        }
+    }
+
+    let knightsPath = knightMoves(knightPosition, endPosition);
+
+    animateKnightPath(knightsPath);
+});

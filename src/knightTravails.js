@@ -26,7 +26,7 @@ function generateKnightAdjacencyList (boardSize) {
     return knightAdjacencyList;
 }
 
-function knightMoves (startPosition, endPosition, boardSize) {
+function knightMoves (startPosition, endPosition, boardSize=8) {
     if (startPosition < 0 || startPosition > 7 || endPosition < 0 || endPosition > 7) {
         throw new Error("Start or End positions are not within chessboard limit!");
     }
@@ -48,7 +48,7 @@ function knightMoves (startPosition, endPosition, boardSize) {
             console.log("\nThe end position was reached!\n");
             console.log("\nSteps: " + moves);
             console.log("\nPath:", path);
-            break;
+            return path;
         }
 
         for (let linkedNode of knightAdjacencyList[currentNode[0]][currentNode[1]]) {
