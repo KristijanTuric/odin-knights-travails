@@ -29,7 +29,7 @@ for (let row = 0; row < 8; row++) {
 
                 if (endPosition != null) {
                     let lastEndPosition = document.getElementById(`${endPosition[0]}, ${endPosition[1]}`);
-                    lastEndPosition.classList.add("cell-active");
+                    lastEndPosition.classList.add("cell-end");
                 }
 
                 // Place knight
@@ -41,11 +41,11 @@ for (let row = 0; row < 8; row++) {
                 if (td.innerHTML != "♞") {
                     if (endPosition != null) {
                         let lastEndPosition = document.getElementById(`${endPosition[0]}, ${endPosition[1]}`);
-                        lastEndPosition.classList.remove("cell-active");
+                        lastEndPosition.classList.remove("cell-end");
                     }
     
                     // Place end point
-                    td.classList.add("cell-active");
+                    td.classList.add("cell-end");
                     endPosition = [row, col];
                     selectEndBtnClicked = false;
                 }                
@@ -96,6 +96,7 @@ clearBtn.addEventListener("click", () => {
 
             cell.innerHTML = null;
             cell.classList.remove("cell-active");
+            cell.classList.remove("cell-end");
             placeBtnClicked = false;
             selectEndBtnClicked = false;
         }

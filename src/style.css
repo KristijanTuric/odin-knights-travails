@@ -99,3 +99,7 @@ button:active {
 .cell-active {
     background-color: gray;
 }
+
+.cell-end {
+    background-color: darkgoldenrod;
+}
